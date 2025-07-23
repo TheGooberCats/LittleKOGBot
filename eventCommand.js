@@ -405,7 +405,7 @@ module.exports = {
                 var events = await eventSchema.find();
 
                 events.sort((a, b) => a.unix - b.unix);
-                var eventsList = events.map(event => `Host: **<@${event.host}>**\nTime: <t:${event.unix}:F>\n\n[Event](https://discord.com/channels/${interaction.guild.id}/${config.eventChannel}/${event.messageLink})`);
+                var eventsList = events.map(event => `Host: **<@${event.host}>**\nTime: <t:${event.unix || "Unknown"}:F>\n\n[Event](https://discord.com/channels/${interaction.guild.id}/${config.eventChannel}/${event.messageLink})`);
 
                 const pinnedMessages = await eventChannel.messages.fetchPinned();
 
